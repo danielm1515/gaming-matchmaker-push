@@ -10,6 +10,8 @@ class Settings(BaseSettings):
         "http://localhost:5173",
         "http://localhost:3000",
         "https://gaming-matchmaker-push-client.vercel.app",
+        "https://gaming-matchmaker-push-client.vercel.app/auth",
+        "https://gaming-matchmaker-push.onrender.com",
     ]
 
     # Web Push (VAPID) — generate once with: python generate_vapid_keys.py
