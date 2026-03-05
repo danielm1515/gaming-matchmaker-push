@@ -5,10 +5,11 @@ from app.config import settings
 engine = create_async_engine(
     settings.DATABASE_URL,
     echo=False,
-    pool_pre_ping=True,      # re-validate connections before use (important for Neon)
-    pool_size=5,             # Neon pooler works best with small pool
+    pool_pre_ping=True,
+    pool_size=5,
     max_overflow=10,
-    pool_recycle=300,        # recycle connections every 5 min to avoid Neon idle timeouts
+    pool_recycle=300,
+    connect_args={"statement_cache_size": 0},
 )
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
 
