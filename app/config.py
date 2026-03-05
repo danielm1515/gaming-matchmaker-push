@@ -6,7 +6,11 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "change-me-in-production"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
-    CORS_ORIGINS: list[str] = ["http://localhost:5173", "http://localhost:3000"]
+    CORS_ORIGINS: list[str] = [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://gaming-matchmaker-push-client.vercel.app",
+    ]
 
     # Web Push (VAPID) — generate once with: python generate_vapid_keys.py
     VAPID_PUBLIC_KEY: str = ""
