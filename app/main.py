@@ -41,9 +41,17 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Gaming Matchmaker API", version="1.0.0", lifespan=lifespan)
 
+_required_origins: list[str] = [
+    "https://gaming-matchmaker-push-client.vercel.app",
+    "https://gaming-matchmaker-push.onrender.com",
+]
+_cors_origins: list[str] = list(
+    dict.fromkeys(settings.CORS_ORIGINS + _required_origins)
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
